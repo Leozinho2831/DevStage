@@ -3,23 +3,18 @@
 @tailwind utilities;
 
 @layer components {
-    .inputEmpty{
-
+    .input {
+        @apply bg-gray-800 text-gray-100 border border-gray-600 placeholder-gray-400 
+        p-4 pl-12 w-full max-w-[320px] rounded-xl focus:border focus:border-gray-100
     }
 
-    .inputActive{
-
+    .input-invalid{
+        @apply border border-red;
     }
 
-    .inputError{
-
-    }
-
-    .btn{
-
-    }
-
-    .btnHover{
-        
+    .btn {
+        @apply bg-gray-500 text-blue p-5 w-full max-w-[320px] rounded-xl
+        hover:bg-blue hover:text-gray-900;
+        transition: all 0.15s ease-in-out;
     }
 }
