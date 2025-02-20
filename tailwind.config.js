@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: ['src/*.js', '*.html'],
   theme: {
     extend: {
       screens: {
@@ -10,7 +10,9 @@ module.exports = {
       },
 
       colors: {
-        blue: '##6F9DE2',
+        blue: '#6F9DE2',
+
+        red: '#F05D6C',
 
         gray: {
           100: '#DAE4F2',
@@ -31,19 +33,14 @@ module.exports = {
       },
 
       fontSize: {
-        oxa: {
-          md: {fontSize: '40px', lineHeight: '1', fontWeight: '600'},
-          sm: {fontSize: '24px', lineHeight: '1', fontWeight: '600'},
-          lg: {fontSize: '20px', lineHeight: '1', fontWeight: '600'},
-        },
-
-        mont: {
-          md: {fontSize: '16px', lineHeight: '1.6', fontWeight: '400'},
-          sm: {fontSize: '14px', lineHeight: '1.6', fontWeight: '400'},
-          xs: {fontSize: '12px', lineHeight: '1.6', fontWeight: '600'},
-          button: {fontSize: '16px', lineHeight: '1.6', fontWeight: '600'},
-        }
-      }
+        'oxa-md': ['40px', { lineHeight: '1', fontWeight: '600'}],
+        'oxa-sm': ['24px', { lineHeight: '1', fontWeight: '600',}],
+        'oxa-lg': ['20px', { lineHeight: '1', fontWeight: '600'}],
+        'mont-md': ['16px', { lineHeight: '1.6', fontWeight: '400'}],
+        'mont-sm': ['14px', { lineHeight: '1.6', fontWeight: '400'}],
+        'mont-xs': ['12px', { lineHeight: '1.6', fontWeight: '600'}],
+        'mont-button': ['16px', { lineHeight: '1.6', fontWeight: '600'}],
+      },
     },
   },
   plugins: [],
