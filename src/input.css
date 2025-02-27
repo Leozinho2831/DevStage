@@ -5,16 +5,30 @@
 @layer components {
     .input {
         @apply bg-gray-800 text-gray-100 border border-gray-600 placeholder-gray-400 
-        p-4 pl-12 w-full max-w-[320px] rounded-xl focus:border focus:border-gray-100
+        text-mont-md font-montserrat
+        p-4 pl-12 w-full max-w-96 rounded-xl 
+        focus:border focus:border-gray-100
     }
 
     .input-invalid{
         @apply border border-red;
     }
 
-    .btn {
-        @apply bg-gray-500 text-blue p-5 w-full max-w-[320px] rounded-xl
+    .btn{
+        @apply bg-gray-500 text-blue
+        text-mont-button font-montserrat
+        p-5 w-full max-w-96 rounded-xl
         hover:bg-blue hover:text-gray-900;
         transition: all 0.15s ease-in-out;
+    }
+
+    .icon-arrow{
+        /* para mudar a cor do svg */
+        background-image: url('images/icons/arrow-right-blue.svg');
+        @apply w-6 h-6
+    }
+
+    .btn:hover > .icon-arrow{
+        background-image: url('images/icons/arrow-right-gray.svg');
     }
 }
