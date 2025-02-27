@@ -73,7 +73,7 @@ const saveUser = (userData) => {
 
 // cria um usuário
 const formAction = () => {
-    
+
     // valida o form
     const email = document.querySelector('#inputEmail');
     const phone = document.querySelector('#inputPhone');
@@ -222,6 +222,6 @@ const startApp = () => {
     formAction();
 }
 
-startApp();
+// startApp();
 
 document.querySelector("#logo").onclick = () => startApp();
