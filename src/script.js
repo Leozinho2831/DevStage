@@ -40,22 +40,39 @@ const getTotalSubscribers = (userData) => {
 // mostra nova página
 const showInvite = (userData) => {
     app.innerHTML = `
-    <div class="relative">
-        <img class="absolute top-[18px] left-4 w-5 h-5" src="src/images/icons/link.svg" alt="link">
-        <input 
-            class="input"
-            type="text"
-            id="link" 
-            value="https://evento.com?ref=${userData.ref}" 
-            disabled
-        >
-    </div>
-    
-    <div id="stats" class="relative bg-gray-700 border border-gray-600 px-6 pt-7 pb-5 rounded-xl max-w-[368px]">
-        <img class="absolute top-3 left-3 w-5 h-5" src="src/images/icons/check.svg" alt="selo de verificado">
-        <h1 class="font-oxanium text-oxa-md text-gray-200 text-center">${getTotalSubscribers(userData)}</h1>
-        <p class="font-montserrat text-mont-sm text-gray-300 text-center">Inscrições feitas!</p>
-    </div>`;
+    <section class="max-w-96 w-full space-y-6">
+        <header class="grid gap-8">
+            <figure class="grid place-items-center cursor-pointer">
+                <img id="logo" class="w-28 h-8" src="src/images/logo.svg" alt="devStage">
+            </figure>
+            <h1 class="text-oxa-lg font-oxanium text-gray-100 text-center">
+                <span class="block text-blue">CodeCraft</span>
+                Summit 2025
+            </h1>
+        </header>
+
+        <div class="grid gap-3 !mt-12">
+            <h2 class="text-purple text-oxa-sm font-oxanium text-center">Inscrição confirmada!</h2>
+            <p class="text-mont-sm font-montserrat text-gray-300 text-center">Convide mais pessoas e concorra a prêmios! Compartilhe o link e acompanhe as inscrições:</p>
+        </div>
+
+        <div class="relative">
+            <img class="absolute top-[18px] left-4 w-5 h-5" src="src/images/icons/link.svg" alt="link">
+            <input 
+                class="input"
+                type="text"
+                id="link" 
+                value="https://evento.com?ref=${userData.ref}" 
+                disabled
+            >
+        </div>
+        
+        <div id="stats" class="relative w-full max-w-96 bg-gray-700 border border-gray-600 px-6 pt-7 pb-5 rounded-xl">
+            <img class="absolute top-3 left-3 w-5 h-5" src="src/images/icons/check.svg" alt="selo de verificado">
+            <h1 class="font-oxanium text-oxa-md text-gray-200 text-center">${getTotalSubscribers(userData)}</h1>
+            <p class="font-montserrat text-mont-sm text-gray-300 text-center">Inscrições feitas!</p>
+        </div>
+    </section>`;
 }
 
 // salva o usuário
@@ -222,6 +239,6 @@ const startApp = () => {
     formAction();
 }
 
-// startApp();
+startApp();
 
 document.querySelector("#logo").onclick = () => startApp();
