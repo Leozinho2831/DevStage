@@ -14,6 +14,11 @@
         @apply border border-red;
     }
 
+    .input-invalid ~ p{
+        @apply block mt-1 text-red
+        text-mont-xs font-montserrat
+    }
+
     .btn{
         @apply bg-gray-500 text-blue
         text-mont-button font-montserrat
