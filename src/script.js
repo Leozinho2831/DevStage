@@ -21,20 +21,23 @@ const users = [
     },
 ];
 
+// pega o usuário
 const getUser = (userData) => {
     return users.find((user) => {
         return user.email == userData.email;
     });
-  }
-  
-  const getTotalSubscribers = (userData) => {
+}
+
+// mostra total de inscritos no link
+const getTotalSubscribers = (userData) => {
     const subs = users.filter((user) => {
         return user.refBy == userData.ref
     });
 
     return subs.length;
-  }
+}
 
+// mostra nova página
 const showInvite = (userData) => {
     app.innerHTML = `
     <div class="relative">
@@ -55,6 +58,7 @@ const showInvite = (userData) => {
     </div>`;
 }
 
+// salva o usuário
 const saveUser = (userData) => {
     const newUser = {
         // os ... faz o javascript compreender que é a mesma ideia do objeto com email e phone, não sendo necessário repetir
@@ -67,27 +71,92 @@ const saveUser = (userData) => {
     return newUser;
 }
 
-
+// cria um usuário
 const formAction = () => {
-    const form = document.querySelector("#form");
-    form.onsubmit = (event) => {
-        event.preventDefault()
-        const formData = new FormData(form)
-        const userData = {
-            email: formData.get("email"),
-            phone: formData.get("phone"),
+    
+    // valida o form
+    const email = document.querySelector('#inputEmail');
+    const phone = document.querySelector('#inputPhone');
+    const form = document.querySelector('#form');
+
+    // Validação para o email
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    // Validação para o telefone
+    const phoneRegex = /^\(\d{2}\)\s?\d{5}-\d{4}$/;
+
+    const classError = 'input-invalid';
+
+    function verifyInput(){
+
+        if (!emailRegex.test(email.value)){
+            email.classList.add(classError);
+        } else {
+            email.classList.remove(classError);
         }
 
-        const user = getUser(userData);
-        if (user) {
-            showInvite(user);
+        if (!phoneRegex.test(phone.value)){
+            phone.classList.add(classError);
         } else {
-            const newUser = saveUser(userData);
-            showInvite(newUser);
+            phone.classList.remove(classError);
+        }
+    }
+
+    const removeClassError = (element) => {
+        if(element.classList.contains(classError)){
+            element.classList.remove(classError);
+        }
+    }
+
+    email.onclick = () => removeClassError(email);
+    phone.onclick = () => removeClassError(phone);
+
+    // complete valor do input phone
+    function completeValueInput() {
+        phone.value = phone.value.replace(/\D/g, '');
+
+        let valueArrayPhone = [];
+
+        // o replace é para não deixar digitar letras
+        valueArrayPhone = phone.value.split('');
+
+        if (valueArrayPhone.length === 11){
+            phone.value = `(${valueArrayPhone.slice(0, 2).join('')}) ${valueArrayPhone.slice(2, 7).join('')}-${valueArrayPhone.slice(7, 11).join('')}`;
+        }
+    }
+
+    phone.addEventListener('input', completeValueInput);
+
+    form.onsubmit = (event) => {
+        event.preventDefault();
+
+        if(email.value === ''){
+            email.classList.add(classError);
+            verifyInput();
+
+        } else if(phone.value === ''){
+            phone.classList.add(classError);
+            verifyInput();
+
+        } else {
+            const formData = new FormData(form);
+            const userData = {
+                email: formData.get("email"),
+                phone: formData.get("phone"),
+            }
+        
+            const user = getUser(userData);
+        
+            if (user){
+                showInvite(user);
+            } else {
+                const newUser = saveUser(userData);
+                showInvite(newUser);
+            }
         }
     }
 }
 
+// começa a página
 const startApp = () => {
     const content = `
         <section class="max-w-96 w-full">
@@ -116,27 +185,29 @@ const startApp = () => {
                         <span class="block mt-6">Dias 15 a 17 de março | Das 18h às 21h | Online & Gratuito</span>
                     </div>
                 </div>
-                <form action="#" id="form" class="space-y-3 bg-gray-700 p-6 rounded-2xl">
+                <form action="#" novalidate id="form" class="space-y-3 bg-gray-700 p-6 rounded-2xl">
                     <h3 class="text-gray-200 text-oxa-sm font-oxanium">Inscrição</h3>
                     <div class="relative !mt-6">
                         <img class="absolute top-[18px] left-4 w-5 h-5" src="src/images/icons/email.svg" alt="E-mail">
-                        <input 
+                        <input
+                            id="inputEmail"
                             class="input" 
                             type="email"
                             name="email"
                             placeholder="E-mail" 
-                            required
                         >
+                        <p class="hidden">Error message</p>
                     </div>
                     <div class="relative">
                         <img class="absolute top-[18px] left-4 w-5 h-5" src="src/images/icons/phone.svg" alt="Telefone">
-                        <input 
+                        <input
+                            id="inputPhone"
                             class="input" 
                             type="tel"
                             name="phone"
                             placeholder="Telefone"
-                            required
                         >
+                        <p class="hidden">Error message</p>
                     </div>
                     <button class="btn !mt-6 flex justify-between gap-4" type="submit">
                         Confirmar
