@@ -14,6 +14,8 @@ module.exports = {
 
         red: '#F05D6C',
 
+        purple: '#9871F3',
+
         gray: {
           100: '#DAE4F2',
           200: '#C8D0DA',
@@ -33,9 +35,9 @@ module.exports = {
       },
 
       fontSize: {
-        'oxa-md': ['40px', { lineHeight: '1', fontWeight: '600'}],
-        'oxa-sm': ['24px', { lineHeight: '1', fontWeight: '600',}],
-        'oxa-lg': ['20px', { lineHeight: '1', fontWeight: '600'}],
+        'oxa-lg': ['40px', { lineHeight: '1', fontWeight: '600'}],
+        'oxa-md': ['24px', { lineHeight: '1', fontWeight: '600',}],
+        'oxa-sm': ['20px', { lineHeight: '1', fontWeight: '600'}],
         'mont-md': ['16px', { lineHeight: '1.6', fontWeight: '400'}],
         'mont-sm': ['14px', { lineHeight: '1.6', fontWeight: '400'}],
         'mont-xs': ['12px', { lineHeight: '1.6', fontWeight: '600'}],
