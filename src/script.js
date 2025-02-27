@@ -92,7 +92,7 @@ const startApp = () => {
     const content = `
         <section class="max-w-96 w-full">
             <header class="grid gap-8">
-                <figure class="grid place-items-center">
+                <figure class="grid place-items-center cursor-pointer">
                     <img id="logo" class="w-28 h-8" src="src/images/logo.svg" alt="devStage">
                 </figure>
                 <h1 class="text-oxa-lg font-oxanium text-gray-100 text-center">
