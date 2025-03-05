@@ -50,12 +50,12 @@ const showInvite = (userData) => {
                 Summit 2025
             </h1>
         </header>
-
+    
         <div class="grid gap-3 !mt-12">
             <h2 class="text-purple text-oxa-sm font-oxanium text-center">Inscrição confirmada!</h2>
             <p class="text-mont-sm font-montserrat text-gray-300 text-center">Convide mais pessoas e concorra a prêmios! Compartilhe o link e acompanhe as inscrições:</p>
         </div>
-
+    
         <div class="relative">
             <img class="absolute top-[18px] left-4 w-5 h-5" src="src/images/icons/link.svg" alt="link">
             <input 
@@ -66,13 +66,14 @@ const showInvite = (userData) => {
                 disabled
             >
         </div>
-        
+            
         <div id="stats" class="relative w-full max-w-96 bg-gray-700 border border-gray-600 px-6 pt-7 pb-5 rounded-xl">
             <img class="absolute top-3 left-3 w-5 h-5" src="src/images/icons/check.svg" alt="selo de verificado">
             <h1 class="font-oxanium text-oxa-md text-gray-200 text-center">${getTotalSubscribers(userData)}</h1>
             <p class="font-montserrat text-mont-sm text-gray-300 text-center">Inscrições feitas!</p>
         </div>
-    </section>`;
+    </section>
+    `;
 }
 
 // salva o usuário
